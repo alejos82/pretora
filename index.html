@@ -805,6 +805,163 @@ h2 .grad {
   color: rgba(255, 255, 255, 0.75);
 }
 
+/* ─── BANNER + WAITLIST MODAL ─── */
+
+.banner {
+  background: linear-gradient(90deg, var(--brand) 0%, var(--accent) 100%);
+  color: white;
+  text-align: center;
+  font-size: 13.5px;
+  font-weight: 500;
+  padding: 10px 16px;
+  letter-spacing: -0.005em;
+}
+
+.banner a {
+  color: white;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+.banner a:hover { opacity: 0.85; }
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 15, 31, 0.65);
+  backdrop-filter: blur(8px) saturate(150%);
+  -webkit-backdrop-filter: blur(8px) saturate(150%);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: backdrop-in 0.2s ease-out;
+}
+
+@keyframes backdrop-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-card {
+  background: white;
+  border-radius: var(--radius-xl);
+  padding: 44px 38px 36px;
+  max-width: 460px;
+  width: 100%;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  animation: card-in 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes card-in {
+  from { transform: translateY(14px) scale(0.97); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  transition: all 0.15s;
+}
+
+.modal-close:hover {
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+
+.modal-card .chip { margin-bottom: 22px; }
+
+.modal-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+
+.modal-title .grad {
+  background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.modal-sub {
+  font-size: 15.5px;
+  color: var(--text-soft);
+  margin-bottom: 28px;
+  line-height: 1.55;
+}
+
+.modal-sub strong { color: var(--text); font-weight: 600; }
+
+.waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.waitlist-email {
+  width: 100%;
+  padding: 14px 18px;
+  font-size: 15.5px;
+  font-family: var(--font-body);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  transition: all 0.15s;
+  background: white;
+}
+
+.waitlist-email:focus {
+  outline: none;
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px var(--brand-soft);
+}
+
+.waitlist-trust {
+  font-size: 12.5px;
+  color: var(--text-muted);
+  margin-top: 18px;
+  line-height: 1.5;
+}
+
+.success-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(109, 58, 255, 0.32);
+}
+
 /* ─── FOOTER ─── */
 
 footer {
@@ -865,6 +1022,12 @@ footer {
 </head>
 <body>
 
+<!-- ─── BANNER ─── -->
+<div class="banner">
+  Acceso anticipado · 50 % de descuento vitalicio para los primeros 100 ·
+  <a href="#" data-waitlist>Reserva tu cupo →</a>
+</div>
+
 <!-- ─── NAV ─── -->
 <nav class="nav">
   <div class="nav-inner">
@@ -875,7 +1038,7 @@ footer {
       <li><a href="#metodologia">Metodología</a></li>
       <li><a href="#preguntas">Preguntas</a></li>
     </ul>
-    <a href="#precios" class="btn btn-primary">Empezar →</a>
+    <a href="#" data-waitlist class="btn btn-primary">Empezar →</a>
   </div>
 </nav>
 
@@ -892,7 +1055,7 @@ footer {
         Una herramienta <strong>100 % autogestionable</strong>. Responde un cuestionario corto, envía nuestro sondeo a tu lista y obtén tu menú escalonado. <strong>Tú decides cuándo. La IA hace el trabajo.</strong>
       </p>
       <div class="hero-ctas">
-        <a href="#precios" class="btn btn-primary btn-large">Empieza por USD 19 al mes</a>
+        <a href="#" data-waitlist class="btn btn-primary btn-large">Reserva tu acceso anticipado</a>
         <a href="#como-funciona" class="btn btn-outline btn-large">Ver cómo funciona</a>
       </div>
       <p class="hero-trust">Cancela cuando quieras · Sin permanencia</p>
@@ -986,7 +1149,7 @@ footer {
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Dashboard interactivo + PDF</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Centro de ayuda</span></li>
         </ul>
-        <a href="#" class="btn btn-outline plan-cta">Empezar</a>
+        <a href="#" data-waitlist class="btn btn-outline plan-cta">Reservar acceso</a>
       </div>
 
       <div class="plan plan-featured">
@@ -1007,7 +1170,7 @@ footer {
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Soporte por chat</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Re-sondeo mensual automático</span></li>
         </ul>
-        <a href="#" class="btn btn-primary plan-cta">Empezar</a>
+        <a href="#" data-waitlist class="btn btn-primary plan-cta">Reservar acceso</a>
       </div>
 
       <div class="plan">
@@ -1130,9 +1293,9 @@ footer {
   <div class="final-cta">
     <div class="final-cta-inner">
       <h2>Tu próximo precio no debería ser una <em>corazonada</em>.</h2>
-      <p>Empieza por USD 19 al mes. La IA hace el trabajo. Tú decides cuándo.</p>
-      <a href="#" class="btn btn-large">Empezar por USD 19/mes</a>
-      <span class="trust">Cancela cuando quieras · Sin permanencia · 14 días de garantía</span>
+      <p>Pretora abre en pocas semanas. Reserva tu acceso anticipado y obtén 50 % de descuento vitalicio.</p>
+      <a href="#" data-waitlist class="btn btn-large">Reservar mi acceso anticipado</a>
+      <span class="trust">Solo para los primeros 100 founding members</span>
     </div>
   </div>
 </div>
@@ -1151,6 +1314,92 @@ footer {
     </ul>
   </div>
 </footer>
+
+<!-- ─── WAITLIST MODAL ─── -->
+<div class="modal-backdrop" id="waitlist-modal" hidden>
+  <div class="modal-card">
+    <button class="modal-close" aria-label="Cerrar">×</button>
+    <span class="chip">
+      <span class="chip-dot"></span>
+      Acceso anticipado
+    </span>
+    <h2 class="modal-title">Sé de los <span class="grad">primeros 100</span>.</h2>
+    <p class="modal-sub">Pretora abre al público en pocas semanas. Reserva tu cupo ahora y obtén <strong>50 % de descuento vitalicio</strong> cuando lancemos. Solo para founding members.</p>
+    <form class="waitlist-form" id="waitlist-form" action="https://formsubmit.co/alejandro.sierra@udea.edu.co" method="POST">
+      <input type="hidden" name="_subject" value="Nueva inscripción · Lista de espera Pretora">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none">
+      <input type="email" name="email" required placeholder="tu@email.com" class="waitlist-email" autocomplete="email">
+      <button type="submit" class="btn btn-primary btn-large">Reservar mi acceso →</button>
+    </form>
+    <p class="waitlist-trust">No te enviaremos spam. Solo te avisaremos cuando abramos.</p>
+  </div>
+</div>
+
+<!-- ─── SUCCESS MODAL ─── -->
+<div class="modal-backdrop" id="success-modal" hidden>
+  <div class="modal-card">
+    <button class="modal-close" aria-label="Cerrar">×</button>
+    <span class="success-icon">✓</span>
+    <h2 class="modal-title">¡Listo!</h2>
+    <p class="modal-sub">Te escribiremos en cuanto Pretora abra al público. Mientras tanto, ve pensando qué producto o servicio vas a someter al primer estudio de pricing.</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  const waitlistModal = document.getElementById('waitlist-modal');
+  const successModal = document.getElementById('success-modal');
+  const form = document.getElementById('waitlist-form');
+
+  function open(modal) {
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+  }
+  function closeAll() {
+    waitlistModal.hidden = true;
+    successModal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('[data-waitlist]').forEach(el => {
+    el.addEventListener('click', e => { e.preventDefault(); open(waitlistModal); });
+  });
+  document.querySelectorAll('.modal-close').forEach(btn => btn.addEventListener('click', closeAll));
+  [waitlistModal, successModal].forEach(m => {
+    m.addEventListener('click', e => { if (e.target === m) closeAll(); });
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
+
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = form.querySelector('button[type="submit"]');
+    const original = btn.textContent;
+    btn.textContent = 'Reservando...';
+    btn.disabled = true;
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        waitlistModal.hidden = true;
+        open(successModal);
+        form.reset();
+      } else {
+        alert('Hubo un error. Por favor inténtalo de nuevo.');
+      }
+    } catch (err) {
+      alert('Hubo un error de conexión. Por favor inténtalo de nuevo.');
+    } finally {
+      btn.textContent = original;
+      btn.disabled = false;
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
