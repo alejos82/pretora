@@ -444,6 +444,57 @@ h2 .grad {
 
 .step-card p strong { color: var(--text); font-weight: 600; }
 
+/* ─── BILLING TOGGLE ─── */
+
+.billing-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  padding: 5px;
+  border-radius: 999px;
+  margin: 0 auto 48px;
+}
+
+.billing-toggle-wrap {
+  text-align: center;
+}
+
+.toggle-pill {
+  background: transparent;
+  border: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-soft);
+  padding: 9px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-pill:hover { color: var(--text); }
+
+.toggle-pill.active {
+  background: white;
+  color: var(--brand);
+  box-shadow: 0 2px 8px rgba(11, 15, 31, 0.06);
+}
+
+.toggle-savings {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-deep);
+  background: var(--accent-soft);
+  padding: 2px 7px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
 /* ─── PRICING ─── */
 
 .pricing-grid {
@@ -553,6 +604,13 @@ h2 .grad {
   margin-top: 8px;
   margin-bottom: 26px;
 }
+
+.plan-period .savings {
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+[data-billing="annual"] { display: none; }
 
 .plan-features {
   list-style: none;
@@ -805,167 +863,6 @@ h2 .grad {
   color: rgba(255, 255, 255, 0.75);
 }
 
-/* ─── BANNER + WAITLIST MODAL ─── */
-
-.banner {
-  background: linear-gradient(90deg, var(--brand) 0%, var(--accent) 100%);
-  color: white;
-  text-align: center;
-  font-size: 13.5px;
-  font-weight: 500;
-  padding: 10px 16px;
-  letter-spacing: -0.005em;
-}
-
-.banner a {
-  color: white;
-  font-weight: 700;
-  text-decoration: underline;
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 3px;
-  cursor: pointer;
-}
-
-.banner a:hover { opacity: 0.85; }
-
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(11, 15, 31, 0.65);
-  backdrop-filter: blur(8px) saturate(150%);
-  -webkit-backdrop-filter: blur(8px) saturate(150%);
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  animation: backdrop-in 0.2s ease-out;
-}
-
-.modal-backdrop[hidden] {
-  display: none;
-}
-
-@keyframes backdrop-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.modal-card {
-  background: white;
-  border-radius: var(--radius-xl);
-  padding: 44px 38px 36px;
-  max-width: 460px;
-  width: 100%;
-  position: relative;
-  box-shadow: var(--shadow-lg);
-  text-align: center;
-  animation: card-in 0.32s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes card-in {
-  from { transform: translateY(14px) scale(0.97); opacity: 0; }
-  to { transform: translateY(0) scale(1); opacity: 1; }
-}
-
-.modal-close {
-  position: absolute;
-  top: 14px;
-  right: 16px;
-  background: transparent;
-  border: none;
-  font-size: 24px;
-  color: var(--text-muted);
-  cursor: pointer;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  transition: all 0.15s;
-}
-
-.modal-close:hover {
-  background: var(--brand-soft);
-  color: var(--brand);
-}
-
-.modal-card .chip { margin-bottom: 22px; }
-
-.modal-title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 28px;
-  line-height: 1.15;
-  letter-spacing: -0.025em;
-  color: var(--text);
-  margin-bottom: 14px;
-}
-
-.modal-title .grad {
-  background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.modal-sub {
-  font-size: 15.5px;
-  color: var(--text-soft);
-  margin-bottom: 28px;
-  line-height: 1.55;
-}
-
-.modal-sub strong { color: var(--text); font-weight: 600; }
-
-.waitlist-form {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.waitlist-email {
-  width: 100%;
-  padding: 14px 18px;
-  font-size: 15.5px;
-  font-family: var(--font-body);
-  border: 1.5px solid var(--border-strong);
-  border-radius: var(--radius-sm);
-  color: var(--text);
-  transition: all 0.15s;
-  background: white;
-}
-
-.waitlist-email:focus {
-  outline: none;
-  border-color: var(--brand);
-  box-shadow: 0 0 0 4px var(--brand-soft);
-}
-
-.waitlist-trust {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  margin-top: 18px;
-  line-height: 1.5;
-}
-
-.success-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--brand) 0%, var(--accent) 100%);
-  color: white;
-  font-size: 30px;
-  font-weight: 700;
-  margin-bottom: 20px;
-  box-shadow: 0 8px 24px rgba(109, 58, 255, 0.32);
-}
-
 /* ─── FOOTER ─── */
 
 footer {
@@ -1026,12 +923,6 @@ footer {
 </head>
 <body>
 
-<!-- ─── BANNER ─── -->
-<div class="banner">
-  Acceso anticipado · 50 % de descuento vitalicio para los primeros 100 ·
-  <a href="#" data-waitlist>Reserva tu cupo →</a>
-</div>
-
 <!-- ─── NAV ─── -->
 <nav class="nav">
   <div class="nav-inner">
@@ -1042,7 +933,7 @@ footer {
       <li><a href="#metodologia">Metodología</a></li>
       <li><a href="#preguntas">Preguntas</a></li>
     </ul>
-    <a href="#" data-waitlist class="btn btn-primary">Empezar →</a>
+    <a href="https://app.pretora.co" class="btn btn-primary">Entrar →</a>
   </div>
 </nav>
 
@@ -1056,13 +947,13 @@ footer {
       </span>
       <h1>Tu menú de precios, construido con <span class="grad">IA</span>, validado con tus clientes.</h1>
       <p class="hero-sub">
-        La IA conversa contigo, valida tus supuestos con <strong>data real del mercado</strong> e identifica el rango de precios apropiado para tu producto — incluyendo el <strong>precio óptimo</strong>. Recibes tu menú escalonado, listo para llevar al mercado.
+        La IA conversa contigo, valida tus supuestos con <strong>data real del mercado</strong> e identifica el rango de precios apropiado para tu producto (incluido el <strong>precio óptimo</strong>). Recibes tu menú escalonado en PDF, listo para llevar al mercado.
       </p>
       <div class="hero-ctas">
-        <a href="#" data-waitlist class="btn btn-primary btn-large">Reserva tu acceso anticipado</a>
+        <a href="https://app.pretora.co" class="btn btn-primary btn-large">Crear mi primer menú →</a>
         <a href="#como-funciona" class="btn btn-outline btn-large">Ver cómo funciona</a>
       </div>
-      <p class="hero-trust">Cancela cuando quieras · Sin permanencia</p>
+      <p class="hero-trust">Desde USD 19 al mes · 14 días de garantía · Cancela cuando quieras</p>
     </div>
   </div>
 </section>
@@ -1080,7 +971,7 @@ footer {
       <ul class="check-list">
         <li>
           <span class="check-ic"><svg fill="none" viewBox="0 0 13 13"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-          Vendes un producto o servicio cuyo precio quieres optimizar — sin importar la industria.
+          Vendes un producto o servicio cuyo precio quieres optimizar, sin importar la industria.
         </li>
         <li>
           <span class="check-ic"><svg fill="none" viewBox="0 0 13 13"><path d="M2 7l3 3 6-7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
@@ -1111,17 +1002,17 @@ footer {
       <div class="step-card">
         <div class="step-num">1</div>
         <h3>Responde el cuestionario IA</h3>
-        <p>Nuestra IA te hace <strong>preguntas cortas e inteligentes</strong> sobre tu negocio y tu cliente. En minutos identifica los <strong>motivadores de compra</strong> y los <strong>factores de sensibilidad al precio</strong> de tu mercado.</p>
+        <p>La IA te hace <strong>preguntas cortas e inteligentes</strong> sobre tu negocio y tu cliente. En minutos identifica los <strong>motivadores de compra</strong> y los <strong>factores de sensibilidad al precio</strong> de tu mercado.</p>
       </div>
       <div class="step-card">
         <div class="step-num">2</div>
-        <h3>La IA valida tus supuestos con data del mercado</h3>
-        <p>La IA <strong>contrasta lo que tú crees con tendencias reales del mercado</strong>, analiza a tu competencia y diseña el sondeo Van Westendorp adaptado a tu caso. Tú apruebas o rechazas. Nunca trabajamos con corazonadas sin chequear.</p>
+        <h3>La IA valida con data del mercado</h3>
+        <p>La IA <strong>contrasta lo que tú crees con tendencias reales</strong>, analiza a tu competencia y diseña el sondeo Van Westendorp adaptado a tu caso. Tú apruebas o rechazas. Nunca trabajamos con corazonadas sin chequear.</p>
       </div>
       <div class="step-card">
         <div class="step-num">3</div>
         <h3>Recibe tu menú escalonado</h3>
-        <p><strong>Directional en minutos</strong> con el plan Esencial: la IA simula respuestas a partir de la data del mercado y entrega tres planes con precio óptimo, features y argumentos comerciales. <strong>Validado con tus clientes reales</strong> en Profesional o Élite: envías un sondeo a tu lista y la IA construye el menú sobre respuestas humanas.</p>
+        <p><strong>Directional en minutos</strong> con Esencial: la IA simula respuestas con data del mercado y entrega tres planes con precio óptimo. <strong>Validado con clientes reales</strong> en Profesional+: la IA redacta los mensajes para tu red en WhatsApp, IG, LinkedIn y email; recolectas respuestas en horas, no semanas.</p>
       </div>
     </div>
   </div>
@@ -1133,8 +1024,19 @@ footer {
     <div class="section-header">
       <span class="section-eyebrow">Planes</span>
       <h2>Elige tu plan por <span class="grad">cuánto necesitas</span>.</h2>
-      <p class="section-sub">Mensual, sin permanencia. Cancela cuando quieras. Cambia de plan en cualquier momento.</p>
+      <p class="section-sub">Mensual o anual con 20% de descuento. Sin permanencia. Cancela cuando quieras. Cambia de plan en cualquier momento.</p>
     </div>
+
+    <div class="billing-toggle-wrap">
+      <div class="billing-toggle">
+        <button type="button" class="toggle-pill active" data-billing-toggle="monthly">Mensual</button>
+        <button type="button" class="toggle-pill" data-billing-toggle="annual">
+          Anual
+          <span class="toggle-savings">−20%</span>
+        </button>
+      </div>
+    </div>
+
     <div class="pricing-grid">
 
       <div class="plan">
@@ -1142,19 +1044,23 @@ footer {
         <div class="plan-tagline">Menú directional al instante</div>
         <div class="plan-price">
           <span class="plan-curr">USD</span>
-          <span class="plan-amount">19</span>
+          <span class="plan-amount" data-billing="monthly">19</span>
+          <span class="plan-amount" data-billing="annual">182</span>
         </div>
-        <div class="plan-period">al mes · cancela cuando quieras</div>
+        <div class="plan-period">
+          <span data-billing="monthly">al mes · cancela cuando quieras</span>
+          <span data-billing="annual">al año · <span class="savings">ahorras USD 46</span></span>
+        </div>
         <ul class="plan-features">
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>1 menú</strong> al mes</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>1 producto</strong> por estudio</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Cuestionario IA conversacional</span></li>
-          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Simulación con data del mercado</strong> — sin sondeo, sin lista de clientes</span></li>
+          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>Simulación con data del mercado</strong>, sin sondeo ni lista de clientes</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Menú Good-Better-Best <strong>al instante</strong></span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Entregable PDF</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>1 usuario · Centro de ayuda</span></li>
         </ul>
-        <a href="#" data-waitlist class="btn btn-outline plan-cta">Reservar acceso</a>
+        <a href="https://app.pretora.co" class="btn btn-outline plan-cta">Empezar con Esencial</a>
       </div>
 
       <div class="plan plan-featured">
@@ -1163,44 +1069,52 @@ footer {
         <div class="plan-tagline">Validado con tus clientes reales</div>
         <div class="plan-price">
           <span class="plan-curr">USD</span>
-          <span class="plan-amount">49</span>
+          <span class="plan-amount" data-billing="monthly">39</span>
+          <span class="plan-amount" data-billing="annual">374</span>
         </div>
-        <div class="plan-period">al mes · cancela cuando quieras</div>
+        <div class="plan-period">
+          <span data-billing="monthly">al mes · cancela cuando quieras</span>
+          <span data-billing="annual">al año · <span class="savings">ahorras USD 94</span></span>
+        </div>
         <ul class="plan-features">
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span><strong>4 menús</strong> al mes</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hasta <strong>3 productos</strong> por estudio</span></li>
-          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hasta <strong>500 respuestas</strong> reales</span></li>
+          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hasta <strong>500 respuestas</strong> reales por estudio</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ <strong>Sondeo Van Westendorp a tus clientes</strong></span></li>
+          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ <strong>Mensajes outreach con IA</strong> (WhatsApp, IG, LinkedIn, email)</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ Validación con data del mercado</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ Análisis de tus 3 competidores</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ Recolección por URL pública o CSV</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ Dashboard interactivo</span></li>
-          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ Re-sondeo semestral automático</span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>3 usuarios · Soporte por chat</span></li>
         </ul>
-        <a href="#" data-waitlist class="btn btn-primary plan-cta">Reservar acceso</a>
+        <a href="https://app.pretora.co" class="btn btn-primary plan-cta">Empezar con Profesional</a>
       </div>
 
       <div class="plan">
         <div class="plan-name">Élite</div>
-        <div class="plan-tagline">Validación + benchmark del mercado</div>
+        <div class="plan-tagline">Para consultores y agencias</div>
         <div class="plan-price">
           <span class="plan-curr">USD</span>
-          <span class="plan-amount">149</span>
+          <span class="plan-amount" data-billing="monthly">99</span>
+          <span class="plan-amount" data-billing="annual">950</span>
         </div>
-        <div class="plan-period">al mes · cancela cuando quieras</div>
+        <div class="plan-period">
+          <span data-billing="monthly">al mes · cancela cuando quieras</span>
+          <span data-billing="annual">al año · <span class="savings">ahorras USD 238</span></span>
+        </div>
         <ul class="plan-features">
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Menús <strong>ilimitados</strong></span></li>
           <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Productos <strong>sin límite</strong></span></li>
-          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hasta <strong>1 500 respuestas</strong></span></li>
-          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ <strong>10 competidores</strong> + monitoreo continuo</span></li>
-          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ <strong>White-label</strong> (tu marca)</span></li>
-          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ API + integraciones (CRM, Stripe, etc.)</span></li>
-          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ Re-sondeo trimestral automático</span></li>
-          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ Benchmark vertical comparativo</span></li>
-          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Usuarios ilimitados · Customer Success</span></li>
+          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Hasta <strong>1 500 respuestas</strong> por estudio</span></li>
+          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ Análisis hasta <strong>10 competidores</strong></span></li>
+          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ Mensajes outreach con IA (todos los canales)</span></li>
+          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ <strong>Multi-estudio</strong> (organiza varios clientes o proyectos)</span></li>
+          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ <strong>PDF con tu marca</strong> (white-label)</span></li>
+          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>+ <strong>Panel pagado opcional</strong> (cotizamos por estudio)</span></li>
+          <li><svg fill="none" viewBox="0 0 18 18"><path d="M3 9l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Usuarios ilimitados · Soporte prioritario</span></li>
         </ul>
-        <a href="mailto:hola@pretora.co?subject=Plan%20%C3%89lite" class="btn btn-outline plan-cta">Hablar con nosotros</a>
+        <a href="https://app.pretora.co" class="btn btn-outline plan-cta">Empezar con Élite</a>
       </div>
 
     </div>
@@ -1216,7 +1130,7 @@ footer {
     </div>
     <div class="method-card">
       <p>Van Westendorp lleva <strong>50 años</strong> validando precios con consumidores. Ron Baker formalizó el <em>Good-Better-Best</em> en su libro <em>Implementing Value Pricing</em> (2011) y hoy es el formato dominante en pricing de servicios profesionales y de software.</p>
-      <p>Pretora toma esa metodología — la que se enseña en programas de doctorado en pricing — y la convierte en una <strong>herramienta de IA autogestionable</strong> para empresas que vendieron valor toda la vida pero nunca tuvieron una forma simple de cobrarlo.</p>
+      <p>Pretora toma esa metodología (la que se enseña en programas de doctorado en pricing) y la convierte en una <strong>herramienta de IA autogestionable</strong> para empresas que vendieron valor toda la vida pero nunca tuvieron una forma simple de cobrarlo.</p>
       <div class="method-credit">
         <span class="method-credit-ic">
           <svg width="20" height="20" fill="none" viewBox="0 0 20 20"><path d="M10 1L1 5l9 4 9-4-9-4zM1 14l9 4 9-4M1 9.5l9 4 9-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1241,56 +1155,63 @@ footer {
       <details class="faq-item">
         <summary>¿Necesito tener clientes para que esto funcione?</summary>
         <div class="faq-content">
-          Depende del plan. <strong>Esencial</strong> no necesita lista: la IA simula respuestas con data del mercado y te entrega un menú directional en minutos — útil para validar una hipótesis rápida o cuando aún no tienes audiencia. <strong>Profesional y Élite</strong> sí validan con tus propios clientes mediante sondeo Van Westendorp; recomendamos un mínimo de 100 contactos (clientes actuales, prospectos en CRM, suscriptores de email) para que el resultado sea estadísticamente sólido.
+          Depende del plan. <strong>Esencial</strong> no necesita lista: la IA simula respuestas con data del mercado y te entrega un menú directional en minutos, útil para validar una hipótesis rápida o cuando aún no tienes audiencia. <strong>Profesional y Élite</strong> sí validan con tus propios clientes mediante sondeo Van Westendorp; recomendamos un mínimo de 100 contactos (clientes actuales, prospectos en CRM, suscriptores de email) para que el resultado sea estadísticamente sólido.
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>¿Cómo me ayuda Pretora a recolectar las respuestas más rápido?</summary>
+        <div class="faq-content">
+          En los planes Profesional y Élite, la IA redacta automáticamente los mensajes de invitación para tu red en cuatro canales: <strong>WhatsApp (DM y grupos), Instagram DM, LinkedIn DM y email</strong>. Cada pieza está calibrada al vertical de tu negocio y al perfil de tu cliente. Tú copias y pegas. Buen copy puede triplicar la tasa de respuesta y llevarte de 100 respuestas en 14 días a 100 en 48 horas.
         </div>
       </details>
 
       <details class="faq-item">
         <summary>¿Qué pasa si la respuesta de mis clientes es muy baja?</summary>
         <div class="faq-content">
-          Con la metodología Van Westendorp, una tasa de respuesta del 10-15 % suele ser suficiente. Te ayudamos a redactar el mensaje de invitación para maximizar respuestas. Si aun así no se alcanza el mínimo metodológico, complementamos con panel adicional o aplazamos el estudio.
+          Con la metodología Van Westendorp, una tasa de respuesta del 10-15% suele ser suficiente. Los mensajes asistidos por IA suben significativamente la tasa real. Si aun así no alcanzas el mínimo metodológico, en Élite puedes complementar con un panel pagado pass-through (te cotizamos según vertical y geografía).
         </div>
       </details>
 
       <details class="faq-item">
         <summary>¿Realmente todo el proceso es autogestionable?</summary>
         <div class="faq-content">
-          Sí. La IA te guía paso a paso con preguntas cortas, diseña automáticamente el cuestionario para tu lista, procesa cada respuesta y entrega tu menú escalonado — sin reuniones, sin consultores, sin esperas. Tú entras a la plataforma cuando quieras y a tu propio ritmo.
+          Sí. La IA te guía paso a paso con preguntas cortas, diseña automáticamente el cuestionario, redacta los mensajes para tu red, procesa cada respuesta y entrega tu menú escalonado. Sin reuniones, sin consultores, sin esperas. Tú entras a la plataforma cuando quieras y a tu propio ritmo.
         </div>
       </details>
 
       <details class="faq-item">
         <summary>¿Puedo cancelar cuando quiera?</summary>
         <div class="faq-content">
-          Sí. Todos los planes son mensuales y sin permanencia. Cancelas con un clic desde tu cuenta. Si cancelas, mantienes el acceso hasta el final del mes pagado.
+          Sí. Todos los planes mensuales son sin permanencia. Cancelas con un clic desde tu cuenta. Si cancelas, mantienes el acceso hasta el final del periodo pagado. Los planes anuales tienen 14 días de garantía money-back desde la activación.
         </div>
       </details>
 
       <details class="faq-item">
         <summary>¿Y si no estoy satisfecho con el menú?</summary>
         <div class="faq-content">
-          Si en los primeros 14 días no estás conforme, te devolvemos el 100 % del primer mes. Sin preguntas.
+          Si en los primeros 14 días no estás conforme, te devolvemos el 100% del primer mes (o del primer año si pagaste anual). Sin preguntas.
         </div>
       </details>
 
       <details class="faq-item">
         <summary>¿Cómo se diferencian los tres planes?</summary>
         <div class="faq-content">
-          La diferencia central no es cantidad, es <strong>validez metodológica</strong>. <strong>Esencial</strong> entrega un menú directional simulado por IA con data del mercado — sin lista, sin sondeo, sin esperas, en minutos. Ideal para validar una hipótesis rápida. <strong>Profesional</strong> introduce la validación humana real: envías un sondeo Van Westendorp a tu propia lista de clientes, la IA contrasta con data del mercado, analiza a tus competidores y construye un menú validado con respuestas reales. <strong>Élite</strong> agrega monitoreo continuo de competidores, white-label (tu marca en el entregable), API + integraciones, benchmark vertical y un Customer Success dedicado.
+          La diferencia central no es cantidad, es <strong>validez metodológica</strong>. <strong>Esencial</strong> (USD 19/mes) entrega un menú directional simulado por IA con data del mercado, sin lista ni sondeo, en minutos. Ideal para validar una hipótesis rápida. <strong>Profesional</strong> (USD 39/mes) introduce la validación humana real: envías un sondeo Van Westendorp a tu propia lista, con mensajes redactados por IA para acelerar la recolección, y construye el menú sobre respuestas reales. <strong>Élite</strong> (USD 99/mes) suma multi-estudio para organizar varios clientes/proyectos, PDF con tu marca (white-label), panel pagado opcional para acelerar todavía más y soporte prioritario. Es la versión para consultores y agencias.
         </div>
       </details>
 
       <details class="faq-item">
         <summary>¿Puedo cambiar de plan después?</summary>
         <div class="faq-content">
-          Sí, en cualquier momento. El upgrade se aplica inmediatamente y prorrateamos el cobro del mes en curso. El downgrade aplica en el siguiente ciclo mensual.
+          Sí, en cualquier momento. El upgrade se aplica inmediatamente y prorrateamos el cobro del periodo en curso. El downgrade aplica en el siguiente ciclo.
         </div>
       </details>
 
       <details class="faq-item">
         <summary>¿Pretora funciona para mi tipo de negocio?</summary>
         <div class="faq-content">
-          Sí. Pretora está diseñada para funcionar con <strong>cualquier tipo de empresa</strong>: servicios profesionales, productos físicos, software, educación, salud y cualquier otra vertical. La IA conversa contigo y se adapta a tu negocio durante el cuestionario inicial — no necesitas una versión "para tu industria". Hoy operamos en español, con planes de soporte multilingüe a futuro.
+          Sí. Pretora está diseñada para funcionar con <strong>cualquier tipo de empresa</strong>: servicios profesionales, productos físicos, software, educación, salud y cualquier otra vertical. La IA conversa contigo y se adapta a tu negocio durante el cuestionario inicial. No necesitas una versión "para tu industria". Hoy operamos en español, con planes de soporte multilingüe a futuro.
         </div>
       </details>
 
@@ -1303,9 +1224,9 @@ footer {
   <div class="final-cta">
     <div class="final-cta-inner">
       <h2>Tu próximo precio no debería ser una <em>corazonada</em>.</h2>
-      <p>Pretora abre en pocas semanas. Reserva tu acceso anticipado y obtén 50 % de descuento vitalicio.</p>
-      <a href="#" data-waitlist class="btn btn-large">Reservar mi acceso anticipado</a>
-      <span class="trust">Solo para los primeros 100 founding members</span>
+      <p>Empieza desde USD 19 al mes. Sin permanencia. 14 días de garantía money-back.</p>
+      <a href="https://app.pretora.co" class="btn btn-large">Crear mi primer menú →</a>
+      <span class="trust">Cancela cuando quieras · Sin tarjeta para el primer estudio</span>
     </div>
   </div>
 </div>
@@ -1325,89 +1246,26 @@ footer {
   </div>
 </footer>
 
-<!-- ─── WAITLIST MODAL ─── -->
-<div class="modal-backdrop" id="waitlist-modal" hidden>
-  <div class="modal-card">
-    <button class="modal-close" aria-label="Cerrar">×</button>
-    <span class="chip">
-      <span class="chip-dot"></span>
-      Acceso anticipado
-    </span>
-    <h2 class="modal-title">Sé de los <span class="grad">primeros 100</span>.</h2>
-    <p class="modal-sub">Pretora abre al público en pocas semanas. Reserva tu cupo ahora y obtén <strong>50 % de descuento vitalicio</strong> cuando lancemos. Solo para founding members.</p>
-    <form class="waitlist-form" id="waitlist-form" action="https://formsubmit.co/25c04280df2646fea98f72e0d82defb6" method="POST">
-      <input type="hidden" name="_subject" value="Nueva inscripción · Lista de espera Pretora">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
-      <input type="text" name="_honey" style="display:none">
-      <input type="email" name="email" required placeholder="tu@email.com" class="waitlist-email" autocomplete="email">
-      <button type="submit" class="btn btn-primary btn-large">Reservar mi acceso →</button>
-    </form>
-    <p class="waitlist-trust">No te enviaremos spam. Solo te avisaremos cuando abramos.</p>
-  </div>
-</div>
-
-<!-- ─── SUCCESS MODAL ─── -->
-<div class="modal-backdrop" id="success-modal" hidden>
-  <div class="modal-card">
-    <button class="modal-close" aria-label="Cerrar">×</button>
-    <span class="success-icon">✓</span>
-    <h2 class="modal-title">¡Listo!</h2>
-    <p class="modal-sub">Te escribiremos en cuanto Pretora abra al público. Mientras tanto, ve pensando qué producto o servicio vas a someter al primer estudio de pricing.</p>
-  </div>
-</div>
-
 <script>
 (function() {
-  const waitlistModal = document.getElementById('waitlist-modal');
-  const successModal = document.getElementById('success-modal');
-  const form = document.getElementById('waitlist-form');
+  const buttons = document.querySelectorAll('[data-billing-toggle]');
+  const monthly = document.querySelectorAll('[data-billing="monthly"]');
+  const annual = document.querySelectorAll('[data-billing="annual"]');
 
-  function open(modal) {
-    modal.hidden = false;
-    document.body.style.overflow = 'hidden';
-  }
-  function closeAll() {
-    waitlistModal.hidden = true;
-    successModal.hidden = true;
-    document.body.style.overflow = '';
+  function setMode(mode) {
+    buttons.forEach(b => {
+      b.classList.toggle('active', b.dataset.billingToggle === mode);
+    });
+    monthly.forEach(el => { el.style.display = mode === 'monthly' ? '' : 'none'; });
+    annual.forEach(el => { el.style.display = mode === 'annual' ? '' : 'none'; });
   }
 
-  document.querySelectorAll('[data-waitlist]').forEach(el => {
-    el.addEventListener('click', e => { e.preventDefault(); open(waitlistModal); });
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => setMode(btn.dataset.billingToggle));
   });
-  document.querySelectorAll('.modal-close').forEach(btn => btn.addEventListener('click', closeAll));
-  [waitlistModal, successModal].forEach(m => {
-    m.addEventListener('click', e => { if (e.target === m) closeAll(); });
-  });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeAll(); });
 
-  form.addEventListener('submit', async e => {
-    e.preventDefault();
-    const btn = form.querySelector('button[type="submit"]');
-    const original = btn.textContent;
-    btn.textContent = 'Reservando...';
-    btn.disabled = true;
-    try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      });
-      if (res.ok) {
-        waitlistModal.hidden = true;
-        open(successModal);
-        form.reset();
-      } else {
-        alert('Hubo un error. Por favor inténtalo de nuevo.');
-      }
-    } catch (err) {
-      alert('Hubo un error de conexión. Por favor inténtalo de nuevo.');
-    } finally {
-      btn.textContent = original;
-      btn.disabled = false;
-    }
-  });
+  // Estado inicial: mostrar mensual, esconder anual.
+  setMode('monthly');
 })();
 </script>
 
